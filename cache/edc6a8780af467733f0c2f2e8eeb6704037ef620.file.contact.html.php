@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.7, created on 2014-09-02 00:26:56
+<?php /* Smarty version Smarty-3.0.7, created on 2014-09-02 07:23:53
          compiled from "application/views/public/contact.html" */ ?>
-<?php /*%%SmartyHeaderCode:28358419654049e503d87c5-98532325%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:498756088540500094200a6-94780595%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'edc6a8780af467733f0c2f2e8eeb6704037ef620' => 
     array (
       0 => 'application/views/public/contact.html',
-      1 => 1408189651,
+      1 => 1409613830,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '28358419654049e503d87c5-98532325',
+  'nocache_hash' => '498756088540500094200a6-94780595',
   'function' => 
   array (
   ),
@@ -33,7 +33,7 @@ resource/doc/images/page-header.png">
             <p>Please leave your comment or inquiries by filling the forms below, or  contact us via email or phone for quicker response 
                 <!--<a href="#">Proin id eleifend eros.</a> Donec eu tortor euismod justo varius posuere sed ac sem.</p>-->
             <div id="contactform">
-                <form action="#" id="contact">
+                <form action="contact/add" id="contact" method="POST">
                     <fieldset>
                         <label id="name_label" for="name">Name <span class="note">(required)</span></label>
                         <input type="text" class="text-input" value="" size="50" id="name" name="name">
