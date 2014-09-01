@@ -16,6 +16,7 @@ class contact extends ApplicationBase {
         //load model
         $this->load->model('m_client');
         $this->load->model('m_project');
+        $this->load->model('m_email');
         // load global
         $this->load->library('tnotification');
     }
@@ -33,6 +34,17 @@ class contact extends ApplicationBase {
 //        $this->smarty->assign("url_project", site_url("home/project/title/"));
         // output
         parent::display();
+    }
+
+    function add() {
+        $data = array(
+            'email_name' => $this->input->post('name'),
+            'email_address' => $this->input->post('email'),
+            'email_subject' => $this->input->post('subject'),
+            'email_message' => $this->input->post('msg')
+        );
+        $this->m_email->add($data);
+        redirect('public/contact');
     }
 
 }
