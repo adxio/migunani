@@ -1,0 +1,153 @@
+/* 
+    Document   : content
+    Created on : Feb 17, 2014, 6:12:55 PM
+    Author     : baridy
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+#content {
+    background: url("../img/bg-content.gif") repeat-x scroll left top rgba(0, 0, 0, 0);
+    clear: both;
+    padding: 0;
+}
+
+#main {
+    clear: both;
+    padding: 45px 30px;
+}
+
+#maincontent {
+    float: left;
+    width: 630px;
+}
+
+#maincontent.full {
+    width: 900px;
+}
+
+#maincontent.positionleft {
+    float: left;
+    padding: 0 30px 0 0;
+}
+
+/* post */
+
+.post {
+    clear: both;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+.post .imgframe {
+    background: none repeat scroll 0 0 #F0EFEC;
+    border-radius: 5px;
+    float: left;
+    margin-right: 30px;
+    margin-bottom:10px;
+    padding: 6px;
+}
+
+.post .imgframe img {
+    border: 3px solid #FFFFFF;
+    border-radius: 3px;
+    display: block;
+}
+
+.post .imgframe:hover {
+    background: none repeat scroll 0 0 #F55D2D;
+}
+
+
+.entry-utility {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #EAEAEA;
+    border-image: none;
+    border-style: solid;
+    border-width: 1px 0;
+    color: #BABABA;
+    font-size: 11px;
+    overflow: hidden;
+    padding: 5px 0;
+}
+.quality{
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    /*border-color: #EAEAEA;*/
+    /*border-image: none;*/
+    /*border-style: solid;*/
+    border-width: 1px 0;
+    color: #BABABA;
+    font-size: 11px;
+    overflow: hidden;
+    padding: 5px 0;
+    float:right;
+}
+
+.imgpost{
+    margin:10px 0 10px 0;
+}
+
+.galcontent a img{
+    border: #000 solid 3px !important;
+}
+
+/*before post */
+
+#before-content{
+    background: none repeat scroll 0 0 #DA251D;
+    height: 90px;
+    position: relative;
+}
+
+#before-content.useimage {
+    height: 177px;
+}
+
+
+#before-content.useimage .title-and-desc {
+    background: url("../img/opacity-slider-text.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-radius: 5px;
+    bottom: 30px;
+    padding: 15px 20px;
+    position: absolute;
+    right: 30px;
+}
+
+#before-content.useimage .pagetitle {
+    font-size: 16px;
+}
+
+#before-content.useimage .pagedesc {
+    font-size: 12px;
+}
+#before-content .title-and-desc h1 {
+    line-height: normal;
+    margin-bottom: 0;
+}
+
+
+.line-shadow {
+    background: url("../img/line-shadow.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+    height: 1px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.search {
+    background-color: #F5F5F5;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    margin: 0 0 10px 0;
+    text-shadow: 0 1px 0 #FFFFFF;
+    clear: both;
+}
+

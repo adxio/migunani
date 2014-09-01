@@ -1,0 +1,118 @@
+/* 
+    Document   : sidebar
+    Created on : Feb 21, 2014, 3:45:49 PM
+    Author     : baridy
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+#sidebar {
+    float: left;
+    padding-left: 0;
+    width: 240px;
+}
+#sidebar ul {
+    list-style-position: outside;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+#sidebar ul li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#sidebar .widget-container {
+    border: 1px solid #EDEDED;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    padding: 15px;
+}
+
+#sidebar li li {
+    border-top: 1px solid #EDEDED;
+    list-style-type: none;
+    margin: 0 0 5px;
+    padding: 5px 0 0;
+}
+#sidebar li li:first-child {
+    border: 0 none;
+    padding-top: 0;
+}
+#sidebar li li a {
+    background: url("../img/icon-arrow.png") no-repeat scroll 0 7px rgba(0, 0, 0, 0);
+    color: #74706A;
+    display: inline-block;
+    padding: 3px 0 0 20px;
+}
+#sidebar li li a:hover, #sidebar li li a.active {
+    background: url("../img/icon-arrow-hover.png") no-repeat scroll 0 7px rgba(0, 0, 0, 0);
+    color: #F75948;
+    text-decoration: none;
+}
+#sidebar .latestpost li {
+    clear: left;
+    margin-bottom: 13px;
+    padding-top: 13px;
+}
+#sidebar .latestpost li a, #sidebar .latestpost li a:hover {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: #F75948;
+    padding: 0;
+}
+#sidebar .latestpost li a:hover {
+    text-decoration: underline;
+}
+#sidebar .latestpost .post-date {
+    color: #BABABA;
+    display: block;
+    font-size: 11px;
+}
+#sidebar .download p {
+    margin-bottom: 0;
+}
+#sidebar ul.sub-menu, #sidebar ul.children, #sidebar ul ul ul {
+    margin: 9px 0 0 15px;
+}
+#sidebar ul.sub-menu li, #sidebar ul.children li, #sidebar ul ul ul li {
+    margin-bottom: 5px;
+    padding-bottom: 4px;
+}
+#sidebar ul.sub-menu li:last-child, #sidebar ul.children li:last-child, #sidebar ul ul ul li:last-child {
+    border-bottom: 0 none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+#sidebar .service h2 {
+    font-family: 'DroidSansBold';
+    font-size: 22px;
+}
+#sidebar .service li {
+    margin-bottom: 20px;
+}
+#sidebar .service h4 {
+    background: url("../img/icon-arrows.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    margin-bottom: 10px;
+    padding-left: 35px;
+}
+#sidebar .boxslideshow li {
+    border: 0 none;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+#sidebar .boxslideshow blockquote {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: #74706A;
+    font-family: Georgia,"Times New Roman",Times,serif;
+    font-size: 13px;
+    font-style: italic;
+    padding: 0;
+}
+#sidebar .boxslideshow .testi-name {
+    border-top: 1px solid #EDEDED;
+    display: block;
+    padding-top: 15px;
+    text-align: right;
+}

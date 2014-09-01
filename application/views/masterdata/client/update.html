@@ -1,0 +1,45 @@
+<div class="head-content">
+    <h3>Project Categories</h3>
+    <div class="head-content-nav">
+        <ul>
+            <li><a href="#" class="active">Update Data</a></li>
+            <li><a href="{$config->site_url('masterdata/client/add')}"><img src="{$BASEURL}resource/doc/images/icon/add-icon.png" alt="" /> Add Data</a></li>
+            <li><a href="{$config->site_url('masterdata/client/')}">List Data</a></li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>
+<!-- notification template -->
+{include file="base/templates/notification.html"}
+<!-- end of notification template-->
+
+<form action="{$config->site_url('masterdata/client/update_process')}" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="client_id" value="{$result.client_id|default:''}" />
+    <input type="hidden" name="client_old_logo" value="{$result.client_logo|default:''}" />
+    <input type="hidden" name="client_old_name" value="{$result.client_name|default:''}" />
+    <table class="table-input" width="100%">
+        <tr class="headrow">
+            <th colspan="2">Update Client</th>
+        </tr>
+        <tr>
+            <td width='25%'>Client Name *</td>
+            <td width='75%'><input type="text" name="client_name" maxlength="50" size="30" value="{$result.client_name|default:''}" /></td>
+        </tr>
+        <tr>
+            <td>Client Description *</td>
+            <td><input type="text" name="client_desc" maxlength="100" size="100" value="{$result.client_desc|default:''}" /> </td>
+        </tr>
+        <tr>
+            <td>Client Logo</td>
+            <td>
+                <img src='{$BASEURL}resource/doc/images/client/{$result.client_logo}'/>
+                <br />
+                <br />
+                <input type="file" name="client_logo"/> 
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" name="save" value="Simpan"/> </td>
+        </tr>
+    </table>
+</form>

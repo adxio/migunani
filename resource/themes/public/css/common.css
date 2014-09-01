@@ -1,0 +1,96 @@
+/* 
+    Document   : common
+    Created on : Feb 16, 2014, 8:29:54 PM
+    Author     : baridy
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+
+body {
+    background-color: #222222;
+    /*background-image: url("../img/common-bg.jpg");*/
+    /*background-repeat: repeat;*/
+    color: #666666;
+    font-family: Arial;
+    font-size: 12px;
+    line-height: 20px;
+    margin: 0 auto;
+    padding: 0;
+    background: url("../img/common-bg.jpg") repeat scroll 0 0 #D6D6D6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#common {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+#container {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 10px;
+    margin: 30px auto;
+    padding: 0;
+    width: 960px;
+}
+/*header*/
+
+#header {
+    border-bottom: 4px solid #242322;
+    border-radius: 10px 10px 0 0;
+    height: 87px;
+}
+/*footer */
+
+#after-footer {
+    background: none repeat scroll 0 0 #908E94;
+    border-radius: 0 0 10px 10px;
+    padding: 20px 30px;
+}
+#copyright {
+    color: #000;
+    font-size: 11px;
+    text-align: center;
+}
+#copyright a, #copyright a:visited {
+    color: #958D8D;
+}
+
+/*clear*/
+
+.clear {
+    clear: both;
+    display: block;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+}
+
+/*hr*/
+
+.hr {
+    background-color: #EDEDED;
+    border-width: 0;
+    clear: both;
+    color: #EDEDED;
+    height: 1px;
+    line-height: 0;
+    margin: 30px 0;
+    page-break-after: always;
+    text-align: center;
+    width: 100%;
+}
+
+.client p img{
+    margin: 0;
+    max-height: 60px;
+    max-width: 130px;
+    padding: 3px;
+}

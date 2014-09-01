@@ -1,0 +1,94 @@
+/* 
+    Document   : table
+    Created on : Mar 4, 2014, 7:27:28 PM
+    Author     : beedy
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.table-search {
+    border-collapse: collapse;
+    color: #404040;
+    font-size: 11px;
+    margin: 0;
+    padding: 0;
+}
+
+.table-search .headrow th {
+    background-color: #464646;
+    border-radius: 4px 4px 0 0;
+    color: #FFFFFF;
+    font-weight: bold;
+    margin: 0;
+    padding: 3px 4px;
+    text-align: left;
+    text-shadow: none;
+    vertical-align: middle;
+}
+.table-search td {
+    color: #404040;
+    margin: 0;
+    padding: 5px 5px 5px 10px;
+    vertical-align: middle;
+}
+.table-search td label {
+    margin: 0 10px 0 0;
+    padding: 0;
+    vertical-align: middle;
+}
+.table-search input.input-search {
+    border: 1px solid #C5C5C5;
+    border-radius: 3px;
+    color: #808080;
+    font-size: 11px;
+    margin: 0;
+    padding: 4px;
+}
+.table-search td input, textarea {
+    border: 1px solid #C5C5C5;
+    color: #404040;
+    font-size: 11px;
+    margin: 0 2px 0 0;
+    padding: 4px;
+}
+.table-search input[type="radio"] {
+    border: medium none;
+    margin: 0 2px 0 0;
+    padding: 0;
+    vertical-align: middle;
+}
+.table-search input[type="checkbox"] {
+    border: medium none;
+    margin: 0 2px 0 0;
+    padding: 0;
+    vertical-align: middle;
+}
+/*.table-search input[type="submit"] {
+    background-color: #8BA9C4;
+    background-image: url("../img/table-search-submit.gif");
+    background-position: left top;
+    background-repeat: repeat-x;
+    border: 1px solid #C6D5EC;
+    color: #385A78;
+    margin: 0 3px 0 0;
+    padding: 2px 7px;
+}*/
+/*.table-search input[type="submit"]:hover {
+    border: 1px solid #FFFFFF;
+}*/
+.table-search td select {
+    border: 1px solid #C5C5C5;
+    font-size: 11px;
+    margin: 0 4px 1px 0;
+    padding: 3px;
+}
+
+.table-search .button{
+    clear: both;
+    cursor: pointer;
+    float: left;
+    line-height: 20px;
+    margin-left: 165px;
+    margin-top: 15px;
+    padding: 0 15px;
+}

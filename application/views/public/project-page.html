@@ -1,0 +1,45 @@
+<div id="content">
+    <div id="main">
+        <div class="positionleft" id="maincontent">
+            <div class="post">
+                <div class="imgpost">
+                    <img alt="" src="{$BASEURL}resource/doc/images/migunani-about-us.png">
+                </div>
+                <div class="clear"></div>
+                <div class="entry-content">
+                    <h2 class="posttitle"><a href="single.html">{$proj.project_title}</a></h2>
+                    <p>{$proj.project_content}</p>
+                    <div class="entry-utility">
+                        Posted by <a href="#">Admin </a>&nbsp;|&nbsp;on {$proj.mdd|date_format:'%d %B %Y'}
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="galcontent">
+                <h2 class="posttitle">GALERY PROJECT</h2>
+                {foreach from=$galery item=gal}
+                <a href="{$BASEURL}resource/galery/project/{$gal.gal_cat}/{$gal.project_id}/{$gal.gal_nm}" class="galery-thumb-detail" rel="img_group" title="Tinjauan Lokasi Bencana Di Buayan (14).JPG">
+                    <img width="115" height="90" (14).jpg="" buayan="" di="" bencana="" lokasi="" title="Tinjauan" src="{$BASEURL}resource/galery/project/{$gal.gal_cat}/{$gal.project_id}/{$gal.gal_nm}">
+                </a>
+                {/foreach}
+            </div>
+        </div>
+        <div id="sidebar">
+            <ul>
+                <li class="widget-container latestpost">
+                    <h2 class="widget-title">{$catname.cat_name}</h2>
+                    <ul class="latestpost">
+                        {foreach from=$category item=cat}
+                            <li>
+                                <span class="post-date">{$cat.mdd|date_format:'%d %B %Y'}</span>
+                                <span class="post-title"><a href="{$url_client}/{$cat.project_id}">{$cat.project_title}</a></span>
+                            </li>
+                        {/foreach}
+                    </ul>
+                </li>
+            </ul>
+            <div class="clear"></div><!-- clear float --> 
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
