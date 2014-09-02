@@ -81,8 +81,12 @@ class memberlogin extends ApplicationBase {
     public function login_process() {
 //        exit();
         // params
-        $username = 'operator';
-        $password = 'operator';
+//        $username = 'operator';
+//        $username = '';
+////        $password = 'operator';
+//        $password = '';
+        $username = trim($this->input->post('username'));
+        $password = trim($this->input->post('pass'));
         // get user detail
         $result = $this->m_site->get_user_login($username, $password, $this->config->item('portal_member'));
         // check
@@ -103,9 +107,9 @@ class memberlogin extends ApplicationBase {
             $this->m_site->save_user_login($params);
             // redirect
             redirect('home/memberwelcome');
-        } else {
-            // output
-            redirect('login/memberlogin/index/error');
+//        } else {
+//            // output
+//            redirect('login/memberlogin/index/error');
         }
     }
 
