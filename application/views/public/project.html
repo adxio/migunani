@@ -15,6 +15,28 @@
         });
     });
 </script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("select[name='project_type']").change(function() {
+//            var category = $("option:selected", this).val();
+//            $("input[name='mail_address']").remove();
+//            $("#email_pic .label").remove();
+//            if (status == 'MONITORING') {
+            $.ajax({
+                type: "POST",
+                url: "{$config->site_url('public/project/ajax_category/')}",
+                cache: false,
+                success: function(html)
+                {
+                    $("#toggle").html('<h2 class="trigger">{$rs_project.project_title|default:""}</h2>');
+                }
+            });
+//            } else {
+//                $("#email_pic").html('<input type="text" name="mail_address" value="{$result.mail_address|default:""}" size="45" maxlength="100" /><span class="label">* required</span>');
+//            }
+        });
+    });
+</script>
 
 <div class="useimage" id="before-content">
     <div class="line-shadow"></div>
@@ -34,6 +56,7 @@
         <div class="search">
             <table width="100%" class="table-search">
                 <tbody>
+                <form action="{$BASEURL}index.php/public/project/ajax_category" method="POST">
                     <tr class="headrow">
                         <th colspan="3" >Search Project</th> 
                     </tr>
@@ -42,7 +65,7 @@
                         <td>
                             <select style="width:150px;" name="project_type" class="search_by">
                                 {foreach from=$rs_project_cat item=project_cat}
-                                    <option value="{$project_cat.cat_id|default:""}">{$project_cat.cat_name|default:""}</option>
+                                <option value="{$project_cat.cat_id|default:""}">{$project_cat.cat_name|default:""}</option>
                                 {/foreach}
                             </select>
                         </td>
@@ -52,7 +75,7 @@
                         <td>
                             <select style="width:150px;" name="client" class="search_by">
                                 {foreach from=$rs_client item=client}
-                                    <option value="{$client.client_id|default:""}">{$client.client_name|default:""}</option>
+                                <option value="{$client.client_id|default:""}">{$client.client_name|default:""}</option>
                                 {/foreach}
                             </select>
                         </td>
@@ -62,7 +85,7 @@
                         <td>
                             <select style="width:150px;"name="year" class="sort_by">
                                 {foreach from=$rs_year item=year}
-                                    <option value="{$year.year|default:""}">{$year.year|default:""}</option>
+                                <option value="{$year.year|default:""}">{$year.year|default:""}</option>
                                 {/foreach}
                             </select>
                         </td>
@@ -72,6 +95,7 @@
                             <input type="submit" value="Search" id="submit_btn" class="button" name="submit">
                         </td>
                     </tr>
+                </form>
                 </tbody>
             </table>
         </div>

@@ -100,4 +100,29 @@ class project extends ApplicationBase {
         parent::display();
     }
 
+    function ajax_category() {
+        $type = $this->input->post('project_type');
+        $client = $this->input->post('client');
+        $year = $this->input->post('year');
+//        echo '<pre>';
+//        print_r($type);
+//        print_r($client);
+//        print_r($year);
+//        echo '</pre>';
+//        $project_cat = $this->m_project->get_project_cat_by_name($id);
+        $this->smarty->assign("template_content", "public/project.html");
+        $this->smarty->assign("rs_project_cat", $this->m_project->get_all_project_cat());
+//        if ($id == NULL or $project_cat == NULL) {
+        $this->smarty->assign("rs_project", $this->m_project->get_project_search($type, $client));
+        $this->smarty->assign("rs_type", $type);
+//        } else {
+//        $cat = $project_cat->cat_id;
+//        $this->smarty->assign("rs_project", $this->m_project->get_project_cat_by_trx_project_cat($cat));
+//        }
+        $this->smarty->assign("rs_client", $this->m_client->get_all_client());
+        $this->smarty->assign("rs_year", $this->m_project->get_year());
+        $this->smarty->assign("url_client", site_url("public/project/"));
+        parent::display();
+    }
+
 }

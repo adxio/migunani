@@ -11,8 +11,22 @@ if (!defined('BASEPATH'))
 
 class M_email extends CI_Model {
 
-    function add($data) {
+    public function add($data) {
         $this->db->insert('trx_email', $data);
+    }
+
+    public function get_all_email() {
+        $data = $this->db->get('trx_email');
+        if ($data->num_rows > 0) {
+            return $data->result_array();
+        } else {
+            return array();
+        }
+    }
+
+    public function delete($params) {
+        $this->db->where('email_id', $params);
+        return $this->db->delete('trx_email');
     }
 
 }

@@ -235,4 +235,15 @@ class m_project extends CI_Model {
         }
     }
 
+    function get_project_search($type, $client) {
+        $this->db->where('project_cat', $type);
+        $this->db->where('client_id', $client);
+        $data = $this->db->get('trx_project');
+        if ($data->num_rows > 0) {
+            return $data->result_array();
+        } else {
+            return array();
+        }
+    }
+
 }

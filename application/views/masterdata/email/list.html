@@ -1,0 +1,77 @@
+<!-- javascript -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        var data_id = '';
+        $("#dialog-confirm").hide();
+        $("#dialog-confirm").dialog({
+            autoOpen: false,
+            draggable: false,
+            height: 200,
+            width: 300,
+            resizable: false,
+            modal: true,
+            buttons: {
+                "Delete": function() {
+                    $.ajax({
+                        type: "POST",
+                        url: "{$config->site_url('masterdata/email/delete/')}",
+                        data: 'id=' + data_id,
+                        cache: false,
+                        success: function(data) {
+                            if (data) {
+                                alert("Data berhasil dihapus!");
+                                window.location.reload();
+                            }
+                        }
+                    })
+                    $(this).dialog("close");
+                },
+                Cancel: function() {
+                    $(this).dialog("close");
+                }}
+        });
+        $(".del").click(function() {
+            data_id = $(this).attr("href");
+            $("#dialog-confirm").dialog("open");
+        });
+    })
+</script>
+<div id="dialog-confirm" title="Delete the data?">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>
+</div>
+<div class="head-content">
+    <h3>Email</h3>
+    <div class="head-content-nav">
+        <ul>
+            <li><a href="#" class="active">List Data</a></li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>
+<!-- notification template -->
+{include file="base/templates/notification.html"}
+<!-- end of notification template-->
+<table class="table-view" width="100%">
+    <tr>
+        <th width="5%">No</th>
+        <th width="25%">Email Address</th>
+        <th width="10%">Email Subject</th>
+        <th width="40%">Email Message</th>
+        <th width="10%"></th>
+    </tr>
+    {foreach from=$rs_email key=no item=result}
+    <tr {if ($no % 2) <> 0}class="blink-row"{/if}>
+        <td align='center'>{$no + 1}.</td>
+        <td>{$result.email_address}</td>
+        <td>{$result.email_subject}</td>
+        <td>{$result.email_message}</td>
+        <td align="center">
+            <a onclick="return false" href="{$result.email_id}" class="button-hapus del">Delete</a>
+        </td>
+    </tr>
+    {foreachelse}
+    <tr>
+        <td colspan="5">Empty</td>
+    </tr>
+    {/foreach}
+</table>
