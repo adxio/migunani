@@ -14,7 +14,7 @@
                 "Delete": function() {
                     $.ajax({
                         type: "POST",
-                        url: "{$config->site_url('masterdata/email/delete/')}",
+                        url: "{$config->site_url('content/email/delete/')}",
                         data: 'id=' + data_id,
                         cache: false,
                         success: function(data) {
@@ -40,10 +40,9 @@
     <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>
 </div>
 <div class="head-content">
-    <h3>Personal Email</h3>
+    <h3>Email</h3>
     <div class="head-content-nav">
         <ul>
-            <li><a href="{$config->site_url('masterdata/email/add')}"><img src="{$BASEURL}resource/doc/images/icon/add-icon.png" alt="" /> Add Data</a></li>
             <li><a href="#" class="active">List Data</a></li>
         </ul>
     </div>
@@ -55,22 +54,19 @@
 <table class="table-view" width="100%">
     <tr>
         <th width="5%">No</th>
-        <th width="15%">Personal Name</th>
-        <th width="15%">Personal Phone</th>
-        <th width="20%">Personal Email</th>
-        <th width="20%">Personal Desc</th>
-        <th width="15%"></th>
+        <th width="25%">Email Address</th>
+        <th width="10%">Email Subject</th>
+        <th width="40%">Email Message</th>
+        <th width="10%"></th>
     </tr>
     {foreach from=$rs_email key=no item=result}
     <tr {if ($no % 2) <> 0}class="blink-row"{/if}>
         <td align='center'>{$no + 1}.</td>
-        <td>{$result.personal_name}</td>
-        <td>{$result.personal_phone}</td>
-        <td>{$result.personal_email}</td>
-        <td>{$result.personal_desc}</td>
+        <td>{$result.email_address}</td>
+        <td>{$result.email_subject}</td>
+        <td>{$result.email_message}</td>
         <td align="center">
-            <a href="{$config->site_url({'masterdata/email/update/'|cat:$result.idx})}" class="button-edit">Update</a>
-            <a onclick="return false" href="{$result.idx}" class="button-hapus del">Delete</a>
+            <a onclick="return false" href="{$result.email_id}" class="button-hapus del">Delete</a>
         </td>
     </tr>
     {foreachelse}
