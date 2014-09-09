@@ -30,13 +30,21 @@ class contact extends ApplicationBase {
     }
 
     function add() {
-        $data = array(
-            'email_name' => $this->input->post('name'),
-            'email_address' => $this->input->post('email'),
-            'email_subject' => $this->input->post('subject'),
-            'email_message' => $this->input->post('msg')
-        );
-        $this->m_email->add($data);
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('name', 'Name', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required');
+        $this->form_validation->set_rules('msg', 'Message', 'required');
+        if ($this->form_validation->run() == FALSE) {
+            
+        } else {
+            $data = array(
+                'email_name' => $this->input->post('name'),
+                'email_address' => $this->input->post('email'),
+                'email_subject' => $this->input->post('subject'),
+                'email_message' => $this->input->post('msg')
+            );
+            $this->m_email->add($data);
+        }
         redirect('public/contact');
     }
 

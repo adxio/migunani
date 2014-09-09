@@ -1,3 +1,43 @@
+<script type="text/javascript">
+    $(document).ready(function() {
+        var data_id = '';
+        $("#dialog-confirm").hide();
+        $("#dialog-confirm").dialog({
+            autoOpen: false,
+            draggable: false,
+            height: 200,
+            width: 300,
+            resizable: false,
+            modal: true,
+            buttons: {
+                "Delete": function() {
+                    $.ajax({
+                        type: "POST",
+                        url: "{$config->site_url('public/contact/add/')}",
+                        data: 'id=' + data_id,
+                        cache: false,
+                        success: function(data) {
+                            if (data) {
+                                alert("Data berhasil dihapus!");
+                                window.location.reload();
+                            }
+                        }
+                    })
+                    $(this).dialog("close");
+                },
+                Cancel: function() {
+                    $(this).dialog("close");
+                }}
+        });
+        $(".add").click(function() {
+            data_id = $(this).attr("form");
+            $("#dialog-confirm").dialog("open");
+        });
+    })
+</script>
+<div id="dialog-confirm" title="Delete the data?">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Are you sure correct data inserted?</p>
+</div>
 <div class="useimage" id="before-content">
     <div class="line-shadow"></div>
     <img alt="" src="{$BASEURL}resource/doc/images/page-header.png">  
@@ -13,23 +53,23 @@
             <p>Please leave your comment or inquiries by filling the forms below, or  contact us via email or phone for quicker response 
                 <!--<a href="#">Proin id eleifend eros.</a> Donec eu tortor euismod justo varius posuere sed ac sem.</p>-->
             <div id="contactform">
-                <form action="contact/add" id="contact" method="POST">
-                    <fieldset>
-                        <label id="name_label" for="name">Name <span class="note">(required)</span></label>
-                        <input type="text" class="text-input" value="" size="50" id="name" name="name">
-                        <label id="email_label" for="email">Email <span class="note">(required)</span></label>
-                        <input type="text" class="text-input" value="" size="50" id="email" name="email">
-                        <label id="subject_label" for="subject">Subject</label>
-                        <input type="text" size="50" class="text-input" value="" id="subject" name="subject">
-                        <label id="msg_label" for="msg">Message <span class="note">(required)</span></label>
-                        <textarea class="text-input" id="msg" name="msg" rows="10" cols="10"></textarea><br>
-                        <input type="submit" value="Send Message" id="submit_btn" class="button" name="submit"><div class="clear"></div><!-- clear float --> <br>
-                        <span id="name_error" class="error" style="display: none;">Please enter name !</span>
-                        <span id="email_error" class="error" style="display: none;">Please enter email address !</span>
-                        <span id="email_error2" class="error" style="display: none;">Please enter valid email address !</span>
-                        <span id="msg_error" class="error" style="display: none;">Please enter message !</span>
-                    </fieldset>
-                </form>
+                <!--<form action="contact/add" id="contact" method="POST">-->
+                <fieldset>
+                    <label id="name_label" for="name">Name <span class="note">(required)</span></label>
+                    <input type="text" class="text-input" value="" size="50" id="name" name="name" required>
+                    <label id="email_label" for="email">Email <span class="note">(required)</span></label>
+                    <input type="text" class="text-input" value="" size="50" id="email" name="email" required>
+                    <label id="subject_label" for="subject">Subject</label>
+                    <input type="text" size="50" class="text-input" value="" id="subject" name="subject">
+                    <label id="msg_label" for="msg">Message <span class="note">(required)</span></label>
+                    <textarea class="text-input" id="msg" name="msg" rows="10" cols="10" required></textarea><br>
+                    <input type="submit" value="Send Message" id="submit_btn" class="button add" name="submit"><div class="clear"></div><!-- clear float --> <br>
+                    <span id="name_error" class="error" style="display: none;">Please enter name !</span>
+                    <span id="email_error" class="error" style="display: none;">Please enter email address !</span>
+                    <span id="email_error2" class="error" style="display: none;">Please enter valid email address !</span>
+                    <span id="msg_error" class="error" style="display: none;">Please enter message !</span>
+                </fieldset>
+                <!--</form>-->
             </div><!-- end #contactform -->
             <div class="separator line"></div>
             <div class="clear"></div><!-- clear float --> 
