@@ -21,8 +21,6 @@ class memberlogin extends ApplicationBase {
     public function index($status = "") {
         // set template content
         $this->smarty->assign("template_content", "login/member/form.html");
-        //--
-        $this->login_process();
         // bisnis proses
         if (!empty($this->com_user)) {
             // still login
@@ -34,83 +32,45 @@ class memberlogin extends ApplicationBase {
         parent::display();
     }
 
-    /*
-      // login process
-      public function login_process() {
-      // set rules
-      $this->tnotification->set_rules('username', 'Username', 'trim|required');
-      $this->tnotification->set_rules('pass', 'Password', 'trim|required');
-      // process
-      if ($this->tnotification->run() !== FALSE) {
-      // params
-      $username = trim($this->input->post('username'));
-      $password = trim($this->input->post('pass'));
-      // get user detail
-      $result = $this->m_site->get_user_login($username, $password, $this->config->item('portal_member'));
-      // check
-      if (!empty($result)) {
-      // cek lock status
-      if ($result['lock_st'] == '1') {
-      // output
-      redirect('login/memberlogin/index/locked');
-      }
-      // set session
-      $users = array("user_id" => $result['user_id'], "user_name" => $result['user_name'], "role_nm" => $result['role_nm'], "role_id" => $result['role_id']);
-      $this->session->set_userdata('session_member', $users);
-      // delete login time
-      $this->m_site->delete_user_login_by_date($result['user_id']);
-      // insert login time
-      $params = array($result['user_id'], $_SERVER['REMOTE_ADDR']);
-      $this->m_site->save_user_login($params);
-      // redirect
-      redirect('home/memberwelcome');
-      } else {
-      // output
-      redirect('login/memberlogin/index/error');
-      }
-      } else {
-      // default error
-      redirect('login/memberlogin/index/error');
-      }
-      // output
-      redirect('login/memberlogin/index/error');
-      }
-     */
-
     // login process
     public function login_process() {
-//        exit();
-        // params
-//        $username = 'operator';
-//        $username = '';
-////        $password = 'operator';
-//        $password = '';
-        $username = trim($this->input->post('username'));
-        $password = trim($this->input->post('pass'));
-        // get user detail
-        $result = $this->m_site->get_user_login($username, $password, $this->config->item('portal_member'));
-        // check
-        if (!empty($result)) {
-            // cek lock status
-//            exit();
-            if ($result['lock_st'] == '1') {
+        // set rules
+        $this->tnotification->set_rules('username', 'Username', 'trim|required');
+        $this->tnotification->set_rules('pass', 'Password', 'trim|required');
+
+        if ($this->tnotification->run() !== FALSE) {
+            $username = trim($this->input->post('username'));
+            $password = trim($this->input->post('pass'));
+            // get user detail
+            $result = $this->m_site->get_user_login($username, $password, $this->config->item('portal_member'));
+            // check
+            if (!empty($result)) {
+                // cek lock status
+                if ($result['lock_st'] == '1') {
+                    // output
+                    redirect('login/memberlogin/index/locked');
+                }
+                // set session
+                $users = array("user_id" => $result['user_id'], "user_name" => $result['user_name'], "role_nm" => $result['role_nm'], "role_id" => $result['role_id']);
+                $this->session->set_userdata('session_member', $users);
+                // delete login time
+                $this->m_site->delete_user_login_by_date($result['user_id']);
+                // insert login time
+                $params = array($result['user_id'], $_SERVER['REMOTE_ADDR']);
+                $this->m_site->save_user_login($params);
+                // redirect
+                redirect('home/memberwelcome');
+            } else {
                 // output
-                redirect('login/memberlogin/index/locked');
+                redirect('login/memberlogin/index/error');
             }
-            // set session
-            $users = array("user_id" => $result['user_id'], "user_name" => $result['user_name'], "role_nm" => $result['role_nm'], "role_id" => $result['role_id']);
-            $this->session->set_userdata('session_member', $users);
-            // delete login time
-            $this->m_site->delete_user_login_by_date($result['user_id']);
-            // insert login time
-            $params = array($result['user_id'], $_SERVER['REMOTE_ADDR']);
-            $this->m_site->save_user_login($params);
-            // redirect
-            redirect('home/memberwelcome');
-//        } else {
-//            // output
-//            redirect('login/memberlogin/index/error');
+        } else {
+            // output
+            redirect('login/memberlogin/index/error');
         }
+
+        // output
+        redirect('login/memberlogin/index/error');
     }
 
     // logout process
