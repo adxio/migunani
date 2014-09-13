@@ -1,43 +1,46 @@
 <script type="text/javascript">
     $(document).ready(function() {
-        $("ul.sf-menu").supersubs({
-            minWidth: 13, // minimum width of sub-menus in em units
-            maxWidth: 14, // maximum width of sub-menus in em units
-            extraWidth: 1     // extra width can ensure lines don't sometimes turn over
-                    // due to slight rounding differences and font-family
-        }).superfish();  // call supersubs first, then superfish, so that subs are
-        // not display:none when measuring. Call before initialising
-        // containing tabs for same reason.
+        $("#submit_btn").click(function()
+        {
+            $("#category").submit(function(e)
+            {
+                $("#toggle").html("<img src='{$BASEURL}resource/image/loading.gif'/>");
+                var postData = $(this).serializeArray();
+                var formURL = 'project/ajax_category';
+                $.ajax(
+                        {
+                            url: formURL,
+                            type: "POST",
+                            data: postData,
+                            success: function(data, textStatus, jqXHR)
+                            {
+                                $("#toggle").html(data);
+                                $("ul.sf-menu").supersubs({
+                                    minWidth: 13, // minimum width of sub-menus in em units
+                                    maxWidth: 14, // maximum width of sub-menus in em units
+                                    extraWidth: 1     // extra width can ensure lines don't sometimes turn over
+                                            // due to slight rounding differences and font-family
+                                }).superfish();  // call supersubs first, then superfish, so that subs are
+                                // not display:none when measuring. Call before initialising
+                                // containing tabs for same reason.
 
-        $(".toggle_container").hide();
-        $("h2.trigger").click(function() {
-            $(this).toggleClass("active").next().slideToggle("slow");
-        });
-    });
-</script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("select[name='project_type']").change(function() {
-//            var category = $("option:selected", this).val();
-//            $("input[name='mail_address']").remove();
-//            $("#email_pic .label").remove();
-//            if (status == 'MONITORING') {
-            $.ajax({
-                type: "POST",
-                url: "{$config->site_url('public/project/ajax_category/')}",
-                cache: false,
-                success: function(html)
-                {
-                    $("#toggle").html('<h2 class="trigger">{$rs_project.project_title|default:""}</h2>');
-                }
+                                $(".toggle_container").hide();
+                                $("h2.trigger").click(function() {
+                                    $(this).toggleClass("active").next().slideToggle("slow");
+                                });
+                            },
+                            error: function(jqXHR, textStatus, errorThrown)
+                            {
+                                $("#toggle").html('<pre><code class="prettyprint">AJAX Request Failed<br/> textStatus=' + textStatus + ', errorThrown=' + errorThrown + '</code></pre>');
+                            }
+                        });
+                e.preventDefault();	//STOP default action
             });
-//            } else {
-//                $("#email_pic").html('<input type="text" name="mail_address" value="{$result.mail_address|default:""}" size="45" maxlength="100" /><span class="label">* required</span>');
-//            }
+
+            $("#category").submit(); //SUBMIT FORM
         });
     });
 </script>
-
 <div class="useimage" id="before-content">
     <div class="line-shadow"></div>
     <img alt="" src="{$BASEURL}resource/doc/images/page-header2.png">    
@@ -56,7 +59,8 @@
         <div class="search">
             <table width="100%" class="table-search">
                 <tbody>
-                <form action="{$BASEURL}index.php/public/project/ajax_category" method="POST">
+                    <!--                <form action="{$BASEURL}index.php/public/project/ajax_category" method="POST" name="category" id="category">-->
+                <form action="project/ajax_category" method="POST" name="category" id="category">
                     <tr class="headrow">
                         <th colspan="3" >Search Project</th> 
                     </tr>
@@ -108,7 +112,7 @@
                         <p>{$project.project_content|default:""}</p>
                     </div>
                     <div class="more">
-                        <a href='{$url_client}/{$project.project_id|default:""}'>Readmore</a>
+                        <a href='{$url_client}/detail/{$project.project_id|default:""}'>Readmore</a>
                     </div>
                 </div>
                 {/foreach}

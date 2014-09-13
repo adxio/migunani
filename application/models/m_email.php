@@ -12,7 +12,23 @@ if (!defined('BASEPATH'))
 class M_email extends CI_Model {
 
     public function add($data) {
-        $this->db->insert('trx_email', $data);
+        $cek = $this->cek($data);
+        if ($cek == TRUE) {
+            return $this->db->insert('trx_email', $data);
+        }
+    }
+
+    private function cek($data) {
+        $this->db->where('email_name', $data['email_name']);
+        $this->db->where('email_address', $data['email_address']);
+        $this->db->where('email_subject', $data['email_subject']);
+        $this->db->where('email_message', $data['email_message']);
+        $rs = $this->db->get('trx_email');
+        if ($rs->num_rows > 0) {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
     }
 
     public function get_all_email() {

@@ -59,7 +59,7 @@ and open the template in the editor.
                             <li><a class="sf-with-ul {if $url eq 'project'}current{/if}" href="{$project_url}">Project <span class="sf-sub-indicator"> »</span></a>
                                 <ul style="float: none; width: 12em; display: none; visibility: hidden;">
                                     {foreach from=$project_cat item=project}
-                                        <li style="white-space: normal; float: left; width: 100%;"><a style="float: none; width: auto;" href="{$project_url}/{$project.cat_name|default:""}">{$project.cat_name|default:""}</a></li>
+                                        <li style="white-space: normal; float: left; width: 100%;"><a style="float: none; width: auto;" href="{$project_url}/category/{$project.cat_name|default:""}">{$project.cat_name|default:""}</a></li>
                                     {/foreach}
                                 </ul>
                             </li>                

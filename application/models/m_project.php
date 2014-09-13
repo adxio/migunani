@@ -235,12 +235,11 @@ class m_project extends CI_Model {
         }
     }
 
-    function get_project_search($type, $client) {
-        $this->db->where('project_cat', $type);
-        $this->db->where('client_id', $client);
-        $data = $this->db->get('trx_project');
+    function get_project_search($type, $client, $year) {
+        $query = 'select * from trx_project where project_cat = ' . $type . ' and client_id = ' . $client . ' and (select distinct year(start_date) from trx_project where project_cat = ' . $type . ' and client_id = ' . $client . ') = '.$year;
+        $data = $this->db->query($query);
         if ($data->num_rows > 0) {
-            return $data->result_array();
+            return $data->result();
         } else {
             return array();
         }

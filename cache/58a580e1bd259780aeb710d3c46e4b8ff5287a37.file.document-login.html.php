@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.7, created on 2014-09-02 08:35:55
+<?php /* Smarty version Smarty-3.0.7, created on 2014-09-10 10:38:35
          compiled from "application/views/base/member/document-login.html" */ ?>
-<?php /*%%SmartyHeaderCode:1607805210540510eb5c6d74-64955185%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:325880037540fb9ab8305f0-17032929%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '58a580e1bd259780aeb710d3c46e4b8ff5287a37' => 
     array (
       0 => 'application/views/base/member/document-login.html',
-      1 => 1409594386,
+      1 => 1410304148,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1607805210540510eb5c6d74-64955185',
+  'nocache_hash' => '325880037540fb9ab8305f0-17032929',
   'function' => 
   array (
   ),
@@ -30,7 +30,7 @@ $_smarty_tpl->decodeProperties(array (
         <title>Login - <?php echo (($tmp = @$_smarty_tpl->getVariable('site')->value['site_title'])===null||$tmp==='' ? '' : $tmp);?>
 </title>
         <link href="<?php echo $_smarty_tpl->getVariable('BASEURL')->value;?>
-/resource/doc/images/icon/favicon.ico" rel="SHORTCUT ICON" />
+/resource/doc/images/icon/favicon.jpg" rel="SHORTCUT ICON" />
         <!-- themes style -->
         <link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->getVariable('THEMESPATH')->value;?>
 " media="screen" />
@@ -39,27 +39,25 @@ $_smarty_tpl->decodeProperties(array (
 
     </head>
     <!-- body -->
-    <body class="common">
+    <body class="login-common">
         <!-- load javascript -->
         <?php echo $_smarty_tpl->getVariable('LOAD_JAVASCRIPT')->value;?>
 
         <!-- end of javascript	-->
         <!-- layout -->
-        <div class="background" style="background-image: url('<?php echo $_smarty_tpl->getVariable('BASEURL')->value;?>
-/resource/doc/images/mandiri-background.jpg')">
-            <div class="loginWrapper">
-                <div class="login-logo">
-                    <img alt="" src="<?php echo $_smarty_tpl->getVariable('BASEURL')->value;?>
-/resource/doc/images/mandiri-logo.png"/>
-                </div>
-                <div class="loginBox-head">
-                    <h1><b>Cash Management</b> File System</h1>
-                </div>
-                <!-- content -->
-                <?php $_template = new Smarty_Internal_Template(($_smarty_tpl->getVariable('template_content')->value), $_smarty_tpl->smarty, $_smarty_tpl, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null);
- echo $_template->getRenderedTemplate();?><?php unset($_template);?>
-                <!-- end of content -->
+        <div class="loginWrapper">
+            <div class="loginBox-head">
+                <h1><?php echo (($tmp = @$_smarty_tpl->getVariable('site')->value['site_title'])===null||$tmp==='' ? '' : $tmp);?>
+</h1>
             </div>
+            <!-- content -->
+            <?php $_template = new Smarty_Internal_Template(($_smarty_tpl->getVariable('template_content')->value), $_smarty_tpl->smarty, $_smarty_tpl, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null);
+ echo $_template->getRenderedTemplate();?><?php unset($_template);?>
+            <!-- end of content -->
+        </div>
+        <div class="login-footer">
+            <p><?php echo (($tmp = @$_smarty_tpl->getVariable('site')->value['site_title'])===null||$tmp==='' ? '' : $tmp);?>
+ &copy;2011</p>
         </div>
         <!-- end of layout	-->
     </body>

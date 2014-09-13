@@ -1,7 +1,43 @@
 <script type="text/javascript">
     $(document).ready(function() {
-        var data_id = '';
+        $("#submit_btn").click(function()
+        {
+            $("#contact").submit(function(e)
+            {
+                $("#toggle").html("<img src='{$BASEURL}resource/image/loading.gif'/>");
+                var postData = $(this).serializeArray();
+                var formURL = 'contact/add';
+                $.ajax(
+                        {
+                            url: formURL,
+                            type: "POST",
+                            data: postData,
+                            success: function(data, textStatus, jqXHR)
+                            {
+                                $("#status").html(data);
+//                                window.location.reload();
+                                $('#contact').trigger("reset");
+                            },
+                            error: function(jqXHR, textStatus, errorThrown)
+                            {
+                                $("#status").html('<pre><code class="prettyprint">AJAX Request Failed<br/> textStatus=' + textStatus + ', errorThrown=' + errorThrown + '</code></pre>');
+                            }
+                        });
+                e.preventDefault();	//STOP default action
+            });
+
+            $("#contact").submit(); //SUBMIT FORM
+        });
+    });
+</script>
+<!--<script type="text/javascript">
+    $(document).ready(function() {
         $("#dialog-confirm").hide();
+        var data_id = '';
+        $("#submit_btn").click(function() {
+            data_id = $(this).attr("form");
+            $("#dialog-confirm").dialog("open");
+        });
         $("#dialog-confirm").dialog({
             autoOpen: false,
             draggable: false,
@@ -18,7 +54,7 @@
                         cache: false,
                         success: function(data) {
                             if (data) {
-                                alert("Data berhasil dihapus!");
+                                alert("Data berhasil disimpan!");
                                 window.location.reload();
                             }
                         }
@@ -29,12 +65,8 @@
                     $(this).dialog("close");
                 }}
         });
-        $(".add").click(function() {
-            data_id = $(this).attr("form");
-            $("#dialog-confirm").dialog("open");
-        });
-    })
-</script>
+    });
+</script>-->
 <div id="dialog-confirm" title="Delete the data?">
     <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Are you sure correct data inserted?</p>
 </div>
@@ -49,6 +81,7 @@
 <div id="content">
     <div id="main">
         <div class="positionleft" id="maincontent">
+            <div id="status"></div>
             <h2>Keep in Touch with Us</h2>
             <p>Please leave your comment or inquiries by filling the forms below, or  contact us via email or phone for quicker response 
                 <!--<a href="#">Proin id eleifend eros.</a> Donec eu tortor euismod justo varius posuere sed ac sem.</p>-->
@@ -63,7 +96,8 @@
                         <input type="text" size="50" class="text-input" value="" id="subject" name="subject">
                         <label id="msg_label" for="msg">Message <span class="note">(required)</span></label>
                         <textarea class="text-input" id="msg" name="msg" rows="10" cols="10" required></textarea><br>
-                        <input type="submit" value="Send Message" id="submit_btn" class="button add" name="submit"><div class="clear"></div><!-- clear float --> <br>
+                        <input type="submit" value="Send Message" id="submit_btn" class="button add" name="submit">
+                        <div class="clear"></div><!-- clear float --> <br>
                         <span id="name_error" class="error" style="display: none;">Please enter name !</span>
                         <span id="email_error" class="error" style="display: none;">Please enter email address !</span>
                         <span id="email_error2" class="error" style="display: none;">Please enter valid email address !</span>

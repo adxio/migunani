@@ -99,7 +99,7 @@ class ApplicationBase extends CI_Controller {
         $this->smarty->assign("home_url", site_url("public/home"));
         $this->smarty->assign("about_us_url", site_url("public/aboutus"));
         $this->smarty->assign("contact_url", site_url("public/contact"));
-        $this->smarty->assign("project_url", site_url("public/project/category"));
+        $this->smarty->assign("project_url", site_url("public/project"));
         /* project kind */
         $this->smarty->assign("project_cat", $this->m_project->get_all_project_cat());
         $this->smarty->assign("personel_url", site_url("public/personel"));

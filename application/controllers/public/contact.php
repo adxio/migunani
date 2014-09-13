@@ -44,8 +44,8 @@ class contact extends ApplicationBase {
                 'email_message' => $this->input->post('msg')
             );
             $this->m_email->add($data);
+            echo '<div style="padding: 15px;margin-bottom: 20px;border: 1px solid transparent;border-radius: 4px;color: #8a6d3b;background-color: #fcf8e3;border-color: #faebcc;">Data berhasil disimpan.</div>';
         }
-        redirect('public/contact');
     }
 
 }
