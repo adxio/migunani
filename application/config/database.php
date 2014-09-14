@@ -46,9 +46,9 @@ $active_record = TRUE;
 //$db['default']['password'] = '';
 //$db['default']['database'] = 'migunani_db';
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'migunani';
-$db['default']['password'] = 'migunani';
-$db['default']['database'] = 'migunani_main';
+$db['default']['username'] = 'bruno';
+$db['default']['password'] = 'asdf';
+$db['default']['database'] = 'bruno_migunani';
 
 //$db['default']['hostname'] = 'localhost';
 //$db['default']['username'] = 'k9459015_beedy';

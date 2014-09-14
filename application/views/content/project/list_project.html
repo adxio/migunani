@@ -1,0 +1,96 @@
+<!-- javascript -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        var data_id = '';
+        $("#dialog-confirm").hide();
+        $("#dialog-confirm").dialog({
+            autoOpen: false,
+            draggable: false,
+            height: 200,
+            width: 350,
+            resizable: false,
+            modal: true,
+            buttons: {
+                "Delete": function() {
+                    $.ajax({
+                        type: "POST",
+                        url: "{$config->site_url('content/project/delete/')}",
+                        data: 'id=' + data_id,
+                        cache: false,
+                        success: function(data) {
+                            if (data) {
+                                alert("Data berhasil dihapus!");
+                                window.location.reload();
+                            }
+                        }
+                    })
+                    $(this).dialog("close");
+                },
+                Cancel: function() {
+                    $(this).dialog("close");
+                }}
+        });
+        $(".del").click(function() {
+            data_id = $(this).attr("href");
+            $("#dialog-confirm").dialog("open");
+        });
+    })
+</script>
+<div id="dialog-confirm" title="Delete the data?">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>
+</div>
+<div class="head-content">
+    <h3>Project - {$page_cat.cat_name|default:''}</h3>
+    <div class="head-content-nav">
+        <ul>
+            <li><a href="{$config->site_url({'content/project/add/'|cat:$page_cat.cat_id})}"><img src="{$BASEURL}resource/doc/images/icon/add-icon.png" alt="" />Add Data</a></li>
+            <li><a href="#" class="active">List Project</a></li>
+            <li><a href="{$config->site_url({'content/project/'})}">List Category</a></li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>
+<!-- notification template -->
+{include file="base/templates/notification.html"}
+<!-- end of notification template-->
+<div class="pageRow">
+    <div class="pageNav">
+        <ul>
+            <li class="info"><strong>{$pagination.start|default:'0'} - {$pagination.end|default:'0'}</strong> dari <strong>{$pagination.total|default:'0'}</strong> Data</li>
+            {$pagination.data|default:''}
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>
+<table class="table-view" width="100%">
+    <tr>
+        <th width="5%">No</th>
+        <th width="30%">Project Title</th>
+        <th width="15%">Project Client</th>
+        <th width="15%">Project Date</th>
+        <th width="10%">Project Status</th>
+        <th width="30%"></th>
+    </tr>
+    {foreach from=$rs_id item=result}
+    <tr {if ($no % 2) <> 0}class="blink-row"{/if}>
+        <td align='center'>{$no++}.</td>
+        <td>{$result.project_title}</td>
+        <td>
+            {foreach from=$rs_client item=client}
+            {if $result.client_id|default:'' == $client.client_id}{$client.client_name}{/if}
+            {/foreach}
+        </td>
+        <td align='center'>{$result.start_date|date_format:"%d %B %Y"}</td>
+        <td align='center'>{if $result.active_st == '1'}Publish{else}Non Publish{/if}</td>
+        <td align="center">
+            <a href="{$config->site_url({'content/project/detail/'|cat:$result.project_cat|cat:'/'|cat:$result.project_id})}" class="button-edit">Detail</a>
+            <a href="{$config->site_url({'content/project/update/'|cat:$result.project_cat|cat:'/'|cat:$result.project_id})}" class="button-edit">Update</a>
+            <a onclick='return false' href="{$result.project_id|default:''}#{$result.project_cat|default:''}" class="button-hapus del">Delete</a>
+        </td>
+    </tr>
+    {foreachelse}
+    <tr>
+        <td colspan="6">Empty</td>
+    </tr>
+    {/foreach}
+</table>

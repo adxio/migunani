@@ -1,0 +1,40 @@
+<div class="head-content">
+    <h3>Personal Email</h3>
+    <div class="head-content-nav">
+        <ul>
+            <li><a href="#" class="active"><img src="{$BASEURL}resource/doc/images/icon/add-icon.png" alt="" />Add Data</a></li>
+            <li><a href="{$config->site_url('masterdata/email/')}">List Data</a></li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>
+<!-- notification template -->
+{include file="base/templates/notification.html"}
+<!-- end of notification template-->
+<form action="{$config->site_url('masterdata/email/add_process')}" method="post"  enctype="multipart/form-data">
+    <table class="table-input" width="100%">
+        <tr class="headrow">
+            <th colspan="2">Add Data</th>
+        </tr>
+        <tr>
+            <td width='25%'>Personal Name *</td>
+            <td width='75%'><input type="text" name="personal_name" maxlength="50" size="30" value="{$result.client_name|default:''}" /></td>
+        </tr>
+        <tr>
+            <td>Personal Phone *</td>
+            <td><input type="text" name="personal_phone" maxlength="100" size="100" value="{$result.client_desc|default:''}" /> </td>
+        </tr>
+        <tr>
+            <td>Personal Email *</td>
+            <td><input type="text" name="personal_email" maxlength="100" size="100" value="{$result.client_desc|default:''}" /> </td>
+        </tr>
+        <tr>
+            <td>Personal Desc *</td>
+            <td><input type="text" name="personal_desc" maxlength="100" size="100" value="{$result.client_desc|default:''}" /> </td>
+        </tr>
+        
+        <tr>
+            <td colspan="2"><input type="submit" name="save" value="Simpan"/> </td>
+        </tr>
+    </table>
+</form>

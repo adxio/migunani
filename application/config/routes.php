@@ -40,6 +40,7 @@
 
 $route['default_controller'] = "public/home";
 $route['public/project/(:num)'] = "public/project";
+$route['backend'] = "login/memberlogin";
 $route['404_override'] = '';
 
 

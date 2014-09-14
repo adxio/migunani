@@ -1,0 +1,81 @@
+<script type="text/javascript" src="{$BASEURL}resource/js/jquery.fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<script type="text/javascript" src="{$BASEURL}resource/js/jquery.fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("ul.sf-menu").supersubs({
+            minWidth: 13, // minimum width of sub-menus in em units
+            maxWidth: 14, // maximum width of sub-menus in em units
+            extraWidth: 1     // extra width can ensure lines don't sometimes turn over
+                    // due to slight rounding differences and font-family
+        }).superfish();  // call supersubs first, then superfish, so that subs are
+        // not display:none when measuring. Call before initialising
+        // containing tabs for same reason.
+
+        $(".toggle_container").hide();
+        $("h2.trigger").click(function() {
+            $(this).toggleClass("active").next().slideToggle("slow");
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("a[rel=img_group]").fancybox({
+            'titlePosition': 'over',
+            'overlayShow': true,
+            'autoScale': true,
+            'transitionIn': 'elastic',
+            'transitionOut': 'elastic',
+            'titleFormat': function(title, currentArray, currentIndex, currentOpts) {
+                return '<span id="fancybox-title-over">Gambar ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
+            }
+        });
+    });
+</script>
+<link rel="stylesheet" type="text/css" href="{$BASEURL}resource/themes/load-style.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="{$BASEURL}resource/themes/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+<div id="content">
+    <div id="main">
+        <div class="positionleft" id="maincontent">
+            <div class="post">
+                <div class="imgpost">
+                    <img alt="" src="{$BASEURL}resource/doc/images/migunani-about-us.png">
+                </div>
+                <div class="clear"></div>
+                <div class="entry-content">
+                    <h2 class="posttitle"><a href="#">{$proj.project_title}</a></h2>
+                    <p>{$proj.project_content}</p>
+                    <div class="entry-utility">
+                        Posted by <a href="#">Admin </a>&nbsp;|&nbsp;on {$proj.mdd|date_format:'%d %B %Y'}
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="galcontent">
+                <h2 class="posttitle">GALERY PROJECT</h2>
+                {foreach from=$galery item=gal}
+                <a href="{$BASEURL}resource/galery/project/{$gal.gal_cat}/{$gal.project_id}/{$gal.gal_nm}" class="galery-thumb-detail" rel="img_group" title="Tinjauan Lokasi Bencana Di Buayan (14).JPG">
+                    <img width="115" height="90" (14).jpg="" buayan="" di="" bencana="" lokasi="" title="Tinjauan" src="{$BASEURL}resource/galery/project/{$gal.gal_cat}/{$gal.project_id}/{$gal.gal_nm}">
+                </a>
+                {/foreach}
+            </div>
+        </div>
+        <div id="sidebar">
+            <ul>
+                <li class="widget-container latestpost">
+                    <h2 class="widget-title">{$catname.cat_name}</h2>
+                    <ul class="latestpost">
+                        {foreach from=$category item=cat}
+                            <li>
+                                <span class="post-date">{$cat.mdd|date_format:'%d %B %Y'}</span>
+                                <span class="post-title"><a href="{$url_client}/{$cat.project_id}">{$cat.project_title}</a></span>
+                            </li>
+                        {/foreach}
+                    </ul>
+                </li>
+            </ul>
+            <div class="clear"></div><!-- clear float --> 
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
