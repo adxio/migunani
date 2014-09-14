@@ -2,7 +2,7 @@
     <div class="line-shadow"></div>
     <img alt="" src="{$BASEURL}resource/doc/images/page-header3.png">   
     <div class="title-and-desc ">
-        <h1 class="pagetitle">Quality Of Performance</h1><div class="pagedesc">How We Work ?</div>    
+        <h1 class="pagetitle">Quality of Performance</h1><div class="pagedesc">How We Work ?</div>    
     </div><!-- title and desc -->
 </div>
 <div id="content">
@@ -18,7 +18,8 @@
                     <p>{$quality.page_content|default:''}</p>
 
                     <div class="quality">
-                        Posted by <a href="#">Admin </a>&nbsp;|&nbsp;on {$quality.mdd|date_format:'%d %B %Y'} &nbsp;|&nbsp;<a class="more" href="#">Read More</a>
+                        Posted by <a href="#">Admin </a>&nbsp;|&nbsp;on {$quality.mdd|date_format:'%d %B %Y'} &nbsp;|&nbsp;
+                        <a class="more" href="{$url_client}/{$quality.page_id}">Read More</a>
                     </div>
                 </div>
                 <div class="hr"></div>

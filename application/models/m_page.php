@@ -42,6 +42,28 @@ class m_page extends CI_Model {
         }
     }
 
+    function get_detail_page_by_id($params) {
+        $this->db->where('active_st', 1);
+        $this->db->where('page_id', $params);
+        $data = $this->db->get('trx_page');
+        if ($data->num_rows > 0) {
+            return $data->result_array();
+        } else {
+            return array();
+        }
+    }
+
+    function get_page_cat_name($id) {
+        $this->db->select('cat_name');
+        $this->db->where('cat_id', $id);
+        $data = $this->db->get('com_page_cat');
+        if ($data->num_rows > 0) {
+            return $data->result_array();
+        } else {
+            return array();
+        }
+    }
+
     //delete data
     function delete($params) {
         $sql = "DELETE from com_page_cat WHERE cat_id = ?";
@@ -63,7 +85,7 @@ class m_page extends CI_Model {
     //--
     //page manajemen
     function get_all_page_by_cat($params) {
-        $sql = "SELECT * FROM com_page_cat a INNER JOIN trx_page b ON a.cat_id = b.page_cat WHERE a.cat_id = ?";
+        $sql = "SELECT * FROM com_page_cat a INNER JOIN trx_page b ON a.cat_id = b.page_cat WHERE a.cat_id = ? AND active_st = 1 ORDER BY b.page_id";
         $query = $this->db->query($sql, $params);
         if ($query->num_rows() > 0) {
             $result = $query->result_array();
@@ -91,6 +113,17 @@ class m_page extends CI_Model {
     function manage($params) {
         $sql = "UPDATE trx_page SET page_title = ?, page_content = ?, active_st = ?, mdb = ?, mdd= NOW() WHERE page_id = ?";
         return $this->db->query($sql, $params);
+    }
+
+    function get_page_by_id($id) {
+        $this->db->where('active_st', 1);
+        $this->db->where('page_cat', $id);
+        $data = $this->db->get('trx_page');
+        if ($data->num_rows > 0) {
+            return $data->result_array();
+        } else {
+            return array();
+        }
     }
 
 }

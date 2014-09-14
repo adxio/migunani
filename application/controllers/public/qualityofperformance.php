@@ -25,14 +25,21 @@ class qualityofperformance extends ApplicationBase {
         $this->smarty->assign("template_content", "public/qualityofperformance.html");
         // get data
         $this->smarty->assign("rs_quality", $this->m_page->get_all_page_by_cat(intval(6)));
-        //client
-//        $this->smarty->assign("rs_client", $this->m_client->get_all_client());
-//        //--
-//        $this->smarty->assign("latest_project", $this->m_project->get_latest_project());
-//        //--
-//        $this->smarty->assign("url_client", site_url("home/project/client/"));
-//        $this->smarty->assign("url_project", site_url("home/project/title/"));
-        // output
+        $this->smarty->assign("url_client", site_url("public/qualityofperformance/detail"));
+        parent::display();
+    }
+
+    function detail($id=null) {
+        $qop = $this->m_page->get_detail_page_by_id($id);
+        $page_cat = $qop[0]['page_cat'];
+        $cat_name = $this->m_page->get_page_cat_name($page_cat);
+        $similiar_cat = $this->m_page->get_page_by_id($page_cat);
+        $this->smarty->assign("template_content", "public/qop-page.html");
+//        // get data
+        $this->smarty->assign("quality", $qop);
+        $this->smarty->assign("catname", $cat_name);
+        $this->smarty->assign("similiar", $similiar_cat);
+        $this->smarty->assign("url_client", site_url("public/qualityofperformance/detail"));
         parent::display();
     }
 
